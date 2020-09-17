@@ -6,6 +6,8 @@ This project's purpose is to serve as a testing grounds for me to begin learning
 
 All internal communications will be using Protocol buffers but actual request/response with an endpoint will be in JSON currently (for legacy compatibility) 
 
+A Dockerfile is provided for convenience. Instructions below. 
+
 ## Prerequisites
 
 1. CMake
@@ -48,3 +50,11 @@ To build, simply run `./build.sh $BUILD_TYPE`, where `$BUILD_TYPE`, is either "D
 Debug builds will be built with debug symbols and run unit tests + code coverage reports.
 ### Release
 Release builds will be optimized and run Google Benchmarks
+
+## Build w/Docker
+
+Provided you already have docker installed, simply:
+```
+docker build . -t protobeast
+docker run --name protobeast -p 8080:8080 protobeast:latest
+```

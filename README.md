@@ -1,6 +1,6 @@
-# protobeast
+# Learning Protobuf
 
-Protobeast uses Served (built on Boost.ASIO) to create a simple webserver and expose an API. 
+This application uses Served (built on Boost.ASIO) to create a simple webserver and expose an API. 
 
 This project's purpose is to serve as a testing grounds for me to begin learning Protocol Buffers (as well as to practice my CMake project skills). 
 

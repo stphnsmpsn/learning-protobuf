@@ -8,7 +8,7 @@
 #################################################################################
 
 cmake_minimum_required(VERSION 3.16)
-PROJECT(protobeast VERSION 0.1.0)
+PROJECT(learningprotobuf VERSION 0.1.0)
 STRING(TIMESTAMP COMMENT_DATE "%Y-%m-%d")
 STRING(TIMESTAMP TODAY "%Y%m%d%H%M%S")
 CONFIGURE_FILE(config/version.h.in version.h)
@@ -88,7 +88,7 @@ SET(COMMON_SRCS
 )
 
 SET(PROD_ONLY_SRCS
-    protobeast.cc
+    learningprotobuf.cc
 )
 
 SET(TEST_ONLY_SRCS
@@ -113,23 +113,23 @@ ENDFOREACH()
 
 ######################################################################################
 
-ADD_EXECUTABLE(protobeast
+ADD_EXECUTABLE(learningprotobuf
     ${COMMON_SRCS}
     ${PROD_ONLY_SRCS}
 )
 
-TARGET_LINK_LIBRARIES(protobeast ${FOUND_LIBRARIES})
-SET_TARGET_PROPERTIES(protobeast PROPERTIES VERSION ${CMAKE_PROJECT_VERSION} OUTPUT_NAME protobeast)
+TARGET_LINK_LIBRARIES(learningprotobuf ${FOUND_LIBRARIES})
+SET_TARGET_PROPERTIES(learningprotobuf PROPERTIES VERSION ${CMAKE_PROJECT_VERSION} OUTPUT_NAME learningprotobuf)
 
 ######################################################################################
 
 if(CMAKE_BUILD_TYPE MATCHES Debug)
-    ADD_EXECUTABLE(protobeast_test
+    ADD_EXECUTABLE(learningprotobuf_test
         ${COMMON_SRCS}
         ${TEST_ONLY_SRCS}
     )
 
-    TARGET_LINK_LIBRARIES(protobeast_test
+    TARGET_LINK_LIBRARIES(learningprotobuf_test
         gtest
         gtest_main
         ${FOUND_LIBRARIES}
@@ -140,28 +140,28 @@ if(CMAKE_BUILD_TYPE MATCHES Debug)
 
     setup_target_for_coverage_gcovr_html(
         NAME CoverageHtml
-        EXECUTABLE protobeast_test -j ${PROCESSOR_COUNT}
-        DEPENDENCIES protobeast_test
+        EXECUTABLE learningprotobuf_test -j ${PROCESSOR_COUNT}
+        DEPENDENCIES learningprotobuf_test
         BASE_DIRECTORY "${PROJECT_SOURCE_DIR}/"
     )
 
     setup_target_for_coverage_gcovr_xml(
         NAME CoverageXml
-        EXECUTABLE protobeast_test -j ${PROCESSOR_COUNT}
-        DEPENDENCIES protobeast_test
+        EXECUTABLE learningprotobuf_test -j ${PROCESSOR_COUNT}
+        DEPENDENCIES learningprotobuf_test
         BASE_DIRECTORY "${PROJECT_SOURCE_DIR}/"
     )
     setup_target_for_coverage_lcov(
         NAME CoverageLcov
-        EXECUTABLE protobeast_test -j ${PROCESSOR_COUNT}
-        DEPENDENCIES protobeast_test
+        EXECUTABLE learningprotobuf_test -j ${PROCESSOR_COUNT}
+        DEPENDENCIES learningprotobuf_test
         BASE_DIRECTORY "${PROJECT_SOURCE_DIR}/"
     )
 
     setup_target_for_coverage_sonarqube_xml(
         NAME CoverageSonarqube
-        EXECUTABLE protobeast_test -j ${PROCESSOR_COUNT}
-        DEPENDENCIES protobeast_test
+        EXECUTABLE learningprotobuf_test -j ${PROCESSOR_COUNT}
+        DEPENDENCIES learningprotobuf_test
         BASE_DIRECTORY "${PROJECT_SOURCE_DIR}/"
     )
 endif()
@@ -169,12 +169,12 @@ endif()
 ######################################################################################
 
 if(CMAKE_BUILD_TYPE MATCHES Release)
-    ADD_EXECUTABLE(protobeast_bench
+    ADD_EXECUTABLE(learningprotobuf_bench
         ${COMMON_SRCS}
         ${BENCH_ONLY_SRCS}
     )
 
-    TARGET_LINK_LIBRARIES(protobeast_bench
+    TARGET_LINK_LIBRARIES(learningprotobuf_bench
         gtest
         gtest_main
         benchmark::benchmark

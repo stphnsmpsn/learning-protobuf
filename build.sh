@@ -42,7 +42,7 @@ build_release () {
   rm -rf Release
   cmake -H. -DCMAKE_BUILD_TYPE=Release -B./Release
   make -C./Release
-  ./Release/protobeast_bench | tee Release/BenchOutput.log
+  ./Release/learningprotobuf_bench | tee Release/BenchOutput.log
 }
 
 main $1;

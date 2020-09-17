@@ -55,6 +55,6 @@ Release builds will be optimized and run Google Benchmarks
 
 Provided you already have docker installed, simply:
 ```
-docker build . -t protobeast
-docker run --name protobeast -p 8080:8080 protobeast:latest
+docker build . -t learningprotobuf
+docker run --name learningprotobuf -p 8080:8080 learningprotobuf:latest
 ```

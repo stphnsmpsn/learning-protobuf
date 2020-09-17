@@ -38,7 +38,7 @@ RUN mkdir served.build && \
 # Change working directory back to root
 WORKDIR /
 
-ADD ./ /protobeast
-RUN cd protobeast && ./build.sh Both
+ADD ./ /learningprotobuf
+RUN cd learningprotobuf && ./build.sh Both
 
-CMD ./protobeast/Debug/protobeast
+CMD ./learningprotobuf/Debug/learningprotobuf

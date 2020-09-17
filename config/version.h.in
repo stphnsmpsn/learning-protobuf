@@ -7,4 +7,4 @@
 /**
 * @var VERSION the current version of the library as defined in CMakeLists.txt
 */
-static const std::string VERSION = "@protobeast_VERSION_MAJOR@.@protobeast_VERSION_MINOR@.@protobeast_VERSION_PATCH@-RC@TODAY@";
+static const std::string VERSION = "@learningprotobuf_VERSION_MAJOR@.@learningprotobuf_VERSION_MINOR@.@learningprotobuf_VERSION_PATCH@-RC@TODAY@";

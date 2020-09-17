@@ -1,0 +1,12 @@
+syntax = "proto2";
+
+package api;
+
+message Subscription {
+  required string name = 1;
+  optional int32 interval = 2;
+}
+
+message Subscriptions {
+  repeated Subscription subscriptions = 1;
+}

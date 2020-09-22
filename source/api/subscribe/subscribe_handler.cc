@@ -26,8 +26,6 @@ void SubscribeHandler::RegisterHandler(served::multiplexer &mux) {
             status = Util::from_json(req.body(), subsMessage);
             google::protobuf::RepeatedPtrField<api::Subscription> subs = subsMessage.subscriptions();
 
-            std::cout << Util::instanceof<api::Subscriptions>(&subsMessage);
-
             if(!status.ok()){
                 served::response::stock_reply(400, res);
                 return;

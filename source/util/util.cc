@@ -4,10 +4,6 @@
 
 #include "util/util.hpp"
 
-//template<typename Base, typename T> bool Util::instanceof(const T*) {
-//    return std::is_base_of<Base, T>::value;
-//}
-
 google::protobuf::util::Status Util::from_json(const std::string &json_string, google::protobuf::Message &m) {
     google::protobuf::util::JsonParseOptions options2;
     return google::protobuf::util::JsonStringToMessage(json_string, &m, options2);

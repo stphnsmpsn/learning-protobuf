@@ -41,4 +41,4 @@ WORKDIR /
 ADD ./ /learningprotobuf
 RUN cd learningprotobuf && ./build.sh Both
 
-CMD ./learningprotobuf/Debug/learningprotobuf
+CMD ./learningprotobuf/cmake-build-debug/learningprotobuf

@@ -5,10 +5,11 @@
 #include "api/subscribe/subscribe_handler.hpp"
 #include "api/subscribe/subscribe.pb.h"
 #include "google/protobuf/util/json_util.h"
+#include "util/util.hpp"
 
 static std::string response_ok_json();
-static std::string to_json(const google::protobuf::Message &m);
-static google::protobuf::util::Status from_json(const std::string &json_string, api::Subscriptions &s);
+//static std::string to_json(const google::protobuf::Message &m);
+//static google::protobuf::util::Status from_json(const std::string &json_string, api::Subscriptions &s);
 
 void SubscribeHandler::RegisterHandler(served::multiplexer &mux) {
 
@@ -22,8 +23,10 @@ void SubscribeHandler::RegisterHandler(served::multiplexer &mux) {
             }
 
             api::Subscriptions subsMessage;
-            status = from_json(req.body(), subsMessage);
+            status = Util::from_json(req.body(), subsMessage);
             google::protobuf::RepeatedPtrField<api::Subscription> subs = subsMessage.subscriptions();
+
+            std::cout << Util::instanceof<api::Subscriptions>(&subsMessage);
 
             if(!status.ok()){
                 served::response::stock_reply(400, res);
@@ -38,20 +41,20 @@ void SubscribeHandler::RegisterHandler(served::multiplexer &mux) {
 
 }
 
-static std::string to_json(const google::protobuf::Message &message){
-    std::string output;
-    google::protobuf::util::JsonOptions stOpt;
-    stOpt.always_print_enums_as_ints = true;
-    stOpt.always_print_primitive_fields = true;
-    stOpt.preserve_proto_field_names = true;
-    google::protobuf::util::MessageToJsonString(message, &output, stOpt);
-    return output;
-}
-
-static google::protobuf::util::Status from_json(const std::string &json_string, api::Subscriptions &s){
-    google::protobuf::util::JsonParseOptions options2;
-    return google::protobuf::util::JsonStringToMessage(json_string, &s, options2);
-}
+//static std::string to_json(const google::protobuf::Message &message){
+//    std::string output;
+//    google::protobuf::util::JsonOptions stOpt;
+//    stOpt.always_print_enums_as_ints = true;
+//    stOpt.always_print_primitive_fields = true;
+//    stOpt.preserve_proto_field_names = true;
+//    google::protobuf::util::MessageToJsonString(message, &output, stOpt);
+//    return output;
+//}
+//
+//static google::protobuf::util::Status from_json(const std::string &json_string, api::Subscriptions &s){
+//    google::protobuf::util::JsonParseOptions options2;
+//    return google::protobuf::util::JsonStringToMessage(json_string, &s, options2);
+//}
 
 static std::string response_ok_json(){
     return "{\"status\":\"OK\"}";

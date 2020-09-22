@@ -70,25 +70,26 @@ ADD_SUBDIRECTORY(${CMAKE_CURRENT_BINARY_DIR}/Google_bench/googlebench-src
 ######################################################################################
 
 EXECUTE_PROCESS(COMMAND protoc
-    -I=${CMAKE_SOURCE_DIR}/api/subscribe
-    --cpp_out=${CMAKE_SOURCE_DIR}/api/subscribe
-    ${CMAKE_SOURCE_DIR}/api/subscribe/subscribe.proto
+    -I=${CMAKE_SOURCE_DIR}/source/api/subscribe
+    --cpp_out=${CMAKE_SOURCE_DIR}/source/api/subscribe
+    ${CMAKE_SOURCE_DIR}/source/api/subscribe/subscribe.proto
 )
 
 ######################################################################################
 
 INCLUDE_DIRECTORIES(
     /usr/local/include
-    ./
+    ./source/
 )
 
 SET(COMMON_SRCS
-    api/subscribe/subscribe_handler.cc
-    api/subscribe/subscribe.pb.cc
+    source/api/subscribe/subscribe_handler.cc
+    source/api/subscribe/subscribe.pb.cc
+    source/util/util.cc
 )
 
 SET(PROD_ONLY_SRCS
-    learningprotobuf.cc
+    source/learningprotobuf.cc
 )
 
 SET(TEST_ONLY_SRCS
@@ -96,7 +97,8 @@ SET(TEST_ONLY_SRCS
 )
 
 SET(BENCH_ONLY_SRCS
-    benchmarks/dummy_benchmark.cc
+    benchmarks/main_bench.cc
+    benchmarks/api/subscribe/subscribe_bench.cc
 )
 
 SET(LIBS

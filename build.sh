@@ -32,17 +32,17 @@ main() {
 }
 
 build_debug () {
-  rm -rf Debug
-  cmake -H. -DCMAKE_BUILD_TYPE=Debug -B./Debug
-  make -C./Debug
-  make CoverageHtml -C./Debug | tee Debug/CoverageOutput.log
+  rm -rf cmake-build-debug
+  cmake -H. -DCMAKE_BUILD_TYPE=Debug -B./cmake-build-debug
+  make -C./cmake-build-debug
+  make CoverageHtml -C./cmake-build-debug | tee cmake-build-debug/CoverageOutput.log
 }
 
 build_release () {
-  rm -rf Release
-  cmake -H. -DCMAKE_BUILD_TYPE=Release -B./Release
-  make -C./Release
-  ./Release/learningprotobuf_bench | tee Release/BenchOutput.log
+  rm -rf cmake-build-release
+  cmake -H. -DCMAKE_BUILD_TYPE=Release -B./cmake-build-release
+  make -C./cmake-build-release
+  ./cmake-build-release/learningprotobuf_bench | tee cmake-build-release/BenchOutput.log
 }
 
 main $1;

@@ -1,6 +1,7 @@
 
 #include <served/served.hpp>
 #include "api/subscribe/subscribe_handler.hpp"
+#include "util/util.hpp"
 
 constexpr auto NUM_THREADS = 10;
 constexpr auto LISTEN_ADDRESS = "0.0.0.0";
